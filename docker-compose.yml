@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: mysql_user
+      WORDPRESS_DB_PASSWORD: mysql_pw
+    volumes:
+      - ./:/var/www/html/wp-content/plugins/custom-block
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pw
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: mysql_pw
